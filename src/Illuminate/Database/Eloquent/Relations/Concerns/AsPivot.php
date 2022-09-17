@@ -161,7 +161,7 @@ trait AsPivot
     {
         if (! isset($this->table)) {
             $this->setTable(str_replace(
-                '\\', '', Str::snake(Str::singular(class_basename($this)))
+                '\\', '', $this->prefix.Str::snake(Str::singular(class_basename($this)))
             ));
         }
 

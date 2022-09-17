@@ -49,6 +49,13 @@ abstract class Model implements Arrayable, ArrayAccess, CanBeEscapedWhenCastToSt
     protected $table;
 
     /**
+     * The table prefix for the model.
+     * 
+     * @var string
+     */
+    protected $prefix = '';
+
+    /**
      * The primary key for the model.
      *
      * @var string
@@ -1772,7 +1779,7 @@ abstract class Model implements Arrayable, ArrayAccess, CanBeEscapedWhenCastToSt
      */
     public function getTable()
     {
-        return $this->table ?? Str::snake(Str::pluralStudly(class_basename($this)));
+        return $this->table ?? $this->prefix.Str::snake(Str::pluralStudly(class_basename($this)));
     }
 
     /**
